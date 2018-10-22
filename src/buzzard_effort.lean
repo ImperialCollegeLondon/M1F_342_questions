@@ -18,12 +18,16 @@ inductive prf : fml → Type
 
 open prf
 
-/-
--- example usage:
-
 lemma p_of_p_of_p_of_q (p q : fml) : prf $ (p →' q) →' (p →' p) :=
 begin
   apply mp (p →' q →' p) ((p →' q) →' p →' p) (axk p q),
   exact axs p q p
 end
--/
+
+lemma p_of_p_of_p_of_q' (p q : fml) : prf $ (p →' q) →' (p →' p) :=
+mp (p →' q →' p) ((p →' q) →' p →' p) (axk p q) (axs p q p)
+
+theorem p_of_p (p : fml) : prf $ p →' p :=
+begin
+  exact mp (p →' p →' p) (p →' p) (axk p p) (p_of_p_of_p_of_q p (p →' p)), 
+end
