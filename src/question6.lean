@@ -1,3 +1,10 @@
+/- Question 6 on John Britnell's handout
+   for M1F group project on 18/10/18.
+   Formalised by Kevin Buzzard, with many
+   thanks to Gabriel Ebner for showing him
+   how to do it. 
+-/
+
 inductive fml
 | atom (i : ℕ)
 | imp (a b : fml)
@@ -17,13 +24,19 @@ inductive prf : fml → Type
 
 open prf
 
--- example usage:
 /-
+-- example usage:
+
 lemma p_of_p_of_p_of_q (p q : fml) : prf $ (p →' q) →' (p →' p) :=
 begin
   apply mp (axs p q p),
   exact (axk p q)
 end
+
+-- or just
+
+lemma p_of_p_of_p_of_q' (p q : fml) : prf $ (p →' q) →' (p →' p) :=
+mp (axs p q p) (axk p q)
 -/
 
 lemma Q6a (p : fml) : prf $ p →' p := sorry
