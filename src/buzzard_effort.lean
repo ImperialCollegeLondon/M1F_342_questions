@@ -27,6 +27,7 @@ end
 lemma p_of_p_of_p_of_q' (p q : fml) : prf $ (p →' q) →' (p →' p) :=
 mp (p →' q →' p) ((p →' q) →' p →' p) (axk p q) (axs p q p)
 
+-- question 6a on Britnell sheet
 theorem p_of_p (p : fml) : prf $ p →' p :=
 begin
   exact mp (p →' p →' p) (p →' p) (axk p p) (p_of_p_of_p_of_q p (p →' p)), 
