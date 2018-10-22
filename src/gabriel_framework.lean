@@ -7,8 +7,10 @@ open fml
 
 infixr ` →' `:50 := imp -- right associative
 
-notation `¬' ` := fml.not
+prefix `¬' `:40 := fml.not
 
+#print notation ¬
+#check _root_.not
 
 inductive prf : fml → Type
 | axk (p q) : prf (p →' q →' p)
@@ -27,3 +29,5 @@ begin
   exact axs p q p
 end
 -/
+
+theorem Q6b (p : fml) : prf $ p →' ¬' ¬' p := sorry
