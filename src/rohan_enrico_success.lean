@@ -111,3 +111,4 @@ begin
   exact thm.mp _ _ H2 H1,
 end
 
+end prop_logic
