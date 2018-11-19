@@ -16,7 +16,7 @@ inductive prf : fml → Type
 | axs {p q r} : prf $ (p →' q →' r) →' (p →' q) →' (p →' r)
 | axX {p q} : prf $ ((¬' q) →' (¬' p)) →' p →' q
 | mp {p q} : prf p → prf (p →' q) → prf q
-
+| mp' {p q} : prf (p →' q) → prf p → prf q
 open prf
 
 theorem not_not_p_of_p (p : fml) : prf (p →' (¬' (¬' p))) :=
