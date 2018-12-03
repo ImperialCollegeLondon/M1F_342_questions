@@ -28,11 +28,16 @@ end dedekind_real
 
 open dedekind_real
 
+-- a lemma about inequalities and set membership.
 theorem Q_1a (α: ℝ) (r s: ℚ):
   r ∉ (α: set ℚ) → r < s → s ∉ (α: set ℚ) :=
 λ hna hlt hsa, hna (α.down s hsa r hlt)
 
-theorem Q_1b: linear_order ℝ := {
+-- linear order on the Dedekind reals.
+--
+-- this is a definition rather than a theorem so that it can be used
+-- as data for type class inference.
+def Q_1b: linear_order ℝ := {
   le := dedekind_real.le,
   le_total :=
   λ α β, classical.or_iff_not_imp_left.2
@@ -44,3 +49,37 @@ theorem Q_1b: linear_order ℝ := {
   le_trans := λ α β γ h1 h2 c ha, h2 (h1 ha),
   le_refl := λ a c h, h
 }
+
+instance: linear_order ℝ := Q_1b
+
+-- the Dedekind reals have the least upper bound property:
+-- the lub of a set of Dedekind reals is the union of all its elements.
+theorem Q_1c (S: set ℝ):
+  (∃ σ: ℝ, σ ∈ S) → (∃ τ: ℝ, ∀ σ ∈ S, τ ≥ σ) → (∃ γ: ℝ, is_lub S γ) :=
+λ ⟨σ, hσ⟩ ⟨τ, hτ⟩,
+⟨
+  -- the union is itself a Dedekind real:
+  {
+    carrier := { a: ℚ | ∃ α ∈ S, a ∈ (α: set ℚ) },
+
+    nonemp :=
+    exists.elim σ.nonemp $ λ a haσ, ⟨a, ⟨σ, ⟨hσ, haσ⟩⟩⟩,
+
+    nonrat :=
+    exists.elim τ.nonrat $
+      λ t htτ, ⟨t, (λ ⟨α, ⟨hα, htα⟩⟩, htτ $ (hτ α hα) htα)⟩,
+
+    down := λ p ⟨α, ⟨hαS, hpα⟩⟩ q hqp, ⟨α, ⟨hαS, α.down p hpα q hqp⟩⟩,
+
+    init :=
+    λ p ⟨α, ⟨hαS, hpα⟩⟩ q hqu, lt_of_not_ge $
+      λ hpq, hqu ⟨α, ⟨hαS, or.elim (eq_or_lt_of_le hpq)
+        (λ heq, heq.symm ▸ hpα)
+        (λ hle, α.down p hpα q hle)⟩⟩,
+  },
+  -- & it satisfies the conditions for it to be a least upper bound.
+  ⟨
+    λ α hαS a haα, ⟨α, ⟨hαS, haα⟩⟩,
+    λ γ hγ g ⟨α, ⟨hαS, hgα⟩⟩, hγ α hαS hgα
+  ⟩
+⟩
