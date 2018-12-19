@@ -1,5 +1,5 @@
 # M1F problems class questions from room 342
 
-These are some Lean-related thoughts on the questions on the extra sheets in M1F 2018-19. At the minute we have stuff related to the sheets for week 3 (logic), week 7 (Dedekind cuts) and week 11 (Cantor's theorem).
+These are some Lean-related thoughts on the questions on the extra sheets which we went through in room 342. At the minute we have stuff related to the sheets for 2018 week 3 (`Logic`), 2018 week 7 (`Dedekind_cuts`), 2018 week 11 (`Cantor`), and 2017 week 4 (`Rational_Powers`) (which I don't think we did in 2018).
 
 See the README's in the directories in `src` for more information.
