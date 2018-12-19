@@ -1,0 +1,73 @@
+\documentclass[10pt]{article}
+\usepackage{amsfonts}
+\usepackage{a4wide}
+\usepackage{amsmath}
+\newcommand{\R}{\mathbf{R}}
+\newcommand{\Q}{\mathbf{Q}}
+\newcommand{\Z}{\mathbf{Z}}
+\begin{document}
+
+\begin{flushright} KMB,\ 26/10/17\end{flushright}
+
+\section*{Rational powers.}
+
+\medskip
+
+Raising things to powers $a^b$ is a slightly problematic issue. For example consider equation $(\ddag)$ below:
+
+$$-1=(-1)^1=(-1)^{\frac12+\frac12}=(-1)^{\frac12}\times(-1)^{\frac12}=((-1)\times(-1))^{\frac12}=1^{\frac12}=1.\eqno{(\ddag)}$$
+This argument is a ``proof'' that $-1=1$.
+
+Here's the problem. Very early on in life you are told what $x^a$ means \emph{when $a$ is a positive integer}. It means the obvious thing: $x^1=x$, $x^2=x\times x$, $x^3=x\times x\times x$ and so on. One can then go on to prove the following things:
+
+1) $x^a \times x^b=x^{a+b}$;
+
+2) $(x^a)^b=x^{ab}$;
+
+3) $x^a\times y^a=(xy)^a$.
+
+If $x$ is furthermore assumed to be non-zero, then we can even define $x^a$ for $a=0$ or $a$ a negative integer: we set $x^0=1$, $x^{-1}=1/x$, $x^{-2}=1/(x^2)$ and so on. We can then check that facts (1), (2) and (3) still hold for $x,y\not=0$ and $a,b\in\Z$.
+
+On the other hand, if we use facts (1), (2) and (3) for general numbers $x$, $y$, $a$ and $b$ then we run into trouble, as the example $(\ddag)$ at the top shows. This shows that we have to be more careful!
+
+In this project let us assume that we believe the standard definition of $x^a$ and that (1), (2), (3) are true \emph{for $x$ a positive real number and for $a$ an integer}. Let us also assume the following fact from M1F:
+
+\medskip
+
+{\bf Fact:} If $x>0$ is a positive real number and $n\in\Z_{\geq1}$ is a positive integer, then there is a unique positive real number $y$ such that $y^n=x$.
+
+\medskip
+
+\section*{Proposed definition.}
+
+If $x\in\R_{>0}$ and $n\in\Z_{\geq1}$ then let's \emph{define} $x^{1/n}$ to be the unique positive real number $y$ such that $y^n=x$. For example, $2^{1/2}$ is, by definition, the unique positive real number $y$ such that $y^2=2$, so $2^{1/2}=\sqrt{2}$. Similarly $10^{1/3}$ is the (positive real) cube root of 10 and so on.
+
+Now if $x\in\R_{>0}$ and $q=a/b$ is a rational number with $a,b\in\Z$ and $b>0$, let's \emph{define} $x^q$ to mean $(x^{1/b})^a$.
+
+\medskip
+
+\section*{Questions to mull over.}
+
+Here $x,y$ are always positive reals, and $k,\ell,m,n$ are integers, and $a,b$ are rational numbers.
+
+\smallskip
+
+Q1) If $m/n$ is not in lowest terms, then we need to be careful -- does our definition make sense? Is $x^{2/4}$ definitely equal to $x^{1/2}$? Can you \emph{prove} that $x^a$ is well-defined (in the sense that if $a=m/n=k/\ell$ with $n,\ell>0$ then $x^{m/n}=x^{k/\ell}$?
+
+\smallskip
+
+
+Q2) Can you prove (1), (2), (3) above if $a,b\in\Q$?
+
+
+\smallskip
+
+Q3) Is $(\ddag)$ now a valid proof that $-1=1$? Why not?
+
+
+\smallskip
+
+Q4) Can you now define $x^r$ if $x$ is a positive real number and $r$ is any real number? How might you go about trying to do this? What are the problems you might face here? Are there better ways to define $x^r$? Are (1), (2), (3) true if $a,b$ are real numbers? How might one prove them? 
+
+
+\end{document}
